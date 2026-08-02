@@ -29,39 +29,62 @@ a{color:var(--accent);text-decoration:none}
 a:hover{text-decoration:underline}
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
 .wrap{max-width:1040px;margin:0 auto;padding:0 24px}
-
+ 
 /* ---------- Nav ---------- */
 nav{position:sticky;top:0;z-index:20;background:rgba(244,246,245,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .nav-inner{display:flex;align-items:center;justify-content:space-between;height:60px}
 .logo{font-family:var(--serif);font-weight:600;font-size:1.1rem;color:var(--ink)}
 .logo span{color:var(--accent)}
 .nav-links{display:flex;gap:26px;list-style:none}
-.nav-links a{color:var(--ink-soft);font-size:.92rem;font-weight:500}
+.nav-links a{color:var(--ink-soft);font-size:.92rem;font-weight:500;padding-bottom:3px;border-bottom:2px solid transparent}
 .nav-links a:hover{color:var(--accent);text-decoration:none}
-
+.nav-links a.active{color:var(--accent);border-bottom-color:var(--accent)}
+.menu-btn{display:none;background:none;border:none;cursor:pointer;padding:8px}
+.menu-btn span{display:block;width:22px;height:2px;background:var(--ink);margin:5px 0;transition:transform .2s ease,opacity .2s ease}
+.menu-btn.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.menu-btn.open span:nth-child(2){opacity:0}
+.menu-btn.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+ 
+/* ---------- Scroll reveal ---------- */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .55s ease,transform .55s ease}
+.reveal.visible{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+ 
 /* ---------- Hero ---------- */
-.hero{padding:88px 0 72px}
+.hero{padding:100px 0 84px;color:#fff;background:linear-gradient(rgba(10,22,19,.55),rgba(10,22,19,.75)),url('hero.jpg') center/cover no-repeat,linear-gradient(160deg,#12403A 0%,#0E6B5E 55%,#B34A6F 130%)}
 .eyebrow{font-family:var(--mono);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:18px}
+.hero .eyebrow{color:#8FD9C6}
 h1{font-family:var(--serif);font-weight:600;font-size:clamp(2.3rem,5.4vw,3.6rem);line-height:1.12;letter-spacing:-.01em;max-width:17ch}
 .spark-word{position:relative;white-space:nowrap}
 .spark-word svg{position:absolute;left:0;bottom:-.28em;width:100%;height:.5em;overflow:visible}
 .spark-word path{fill:none;stroke:var(--berry);stroke-width:3;stroke-linecap:round}
-.hero-sub{margin-top:22px;font-size:1.13rem;color:var(--ink-soft);max-width:56ch}
+.hero .spark-word path{stroke:#F48FB1}
+.hero-sub{margin-top:22px;font-size:1.13rem;color:#C9D6D1;max-width:56ch}
 .hero-cta{margin-top:34px;display:flex;gap:14px;flex-wrap:wrap}
 .btn{display:inline-block;padding:12px 22px;border-radius:6px;font-weight:600;font-size:.95rem;transition:transform .12s ease}
 .btn:hover{text-decoration:none;transform:translateY(-1px)}
 .btn-primary{background:var(--accent);color:#fff}
 .btn-ghost{border:1.5px solid var(--line);color:var(--ink);background:var(--card)}
-.hero-stats{margin-top:56px;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
-.stat{background:var(--card);padding:20px 18px}
-.stat b{display:block;font-family:var(--serif);font-size:1.7rem;font-weight:600;color:var(--accent)}
-.stat span{font-size:.85rem;color:var(--ink-soft)}
-
+.hero .btn-ghost{border:1.5px solid rgba(255,255,255,.55);color:#fff;background:transparent}
+.btn-rose{background:#F48FB1;color:#10201C}
+.btn svg{width:18px;height:18px;vertical-align:-3.5px;margin-right:8px;fill:currentColor}
+.hero .eyebrow::before{content:"";display:inline-block;width:30px;height:2px;background:#F48FB1;margin-right:12px;vertical-align:middle}
+.name{font-family:var(--serif);font-weight:600;font-size:clamp(3.2rem,9vw,5.4rem);line-height:1.02;letter-spacing:-.01em}
+.name em{display:block;font-style:italic;color:#F48FB1}
+.type-line{margin-top:20px;font-size:1.3rem;font-weight:500;color:#E4ECE9;min-height:1.6em}
+.cursor{display:inline-block;width:3px;height:1.15em;background:#4ADE80;margin-left:7px;vertical-align:text-bottom;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+@media (prefers-reduced-motion:reduce){.cursor{animation:none}}
+.hero-stats{margin-top:76px;display:grid;grid-template-columns:repeat(4,1fr);gap:28px;border-top:1px solid rgba(255,255,255,.25);padding-top:30px}
+.stat b{display:block;font-family:var(--serif);font-size:2.2rem;font-weight:600;color:#fff;line-height:1.15}
+.stat b em{font-style:normal;color:#F48FB1}
+.stat span{font-size:.9rem;color:#AEBFB9}
+ 
 /* ---------- Sections ---------- */
 section{padding:72px 0}
 .sec-label{font-family:var(--mono);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
 h2{font-family:var(--serif);font-weight:600;font-size:clamp(1.6rem,3vw,2.1rem);margin-bottom:28px}
-
+ 
 /* ---------- About ---------- */
 .about-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:44px;align-items:start}
 .about-grid p+p{margin-top:16px}
@@ -70,7 +93,7 @@ h2{font-family:var(--serif);font-weight:600;font-size:clamp(1.6rem,3vw,2.1rem);m
 .edu-item b{display:block;font-weight:600}
 .edu-item small{color:var(--ink-soft);font-size:.88rem;display:block}
 .edu-tag{display:inline-block;margin-top:8px;font-family:var(--mono);font-size:.72rem;background:var(--accent-soft);color:var(--accent);padding:3px 9px;border-radius:99px}
-
+ 
 /* ---------- Experience ---------- */
 .job{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:26px 28px;margin-bottom:20px}
 .job-head{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:6px}
@@ -82,7 +105,7 @@ h2{font-family:var(--serif);font-weight:600;font-size:clamp(1.6rem,3vw,2.1rem);m
 .job li::before{content:"";position:absolute;left:0;top:.62em;width:8px;height:8px;border-radius:2px;background:var(--accent-soft);border:1.5px solid var(--accent)}
 .job li b{color:var(--ink);font-weight:600}
 .metric{font-family:var(--mono);font-size:.86em;color:var(--berry);font-weight:500}
-
+ 
 /* ---------- Projects ---------- */
 .proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
 .proj{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:24px;display:flex;flex-direction:column;transition:transform .12s ease,box-shadow .12s ease}
@@ -91,20 +114,23 @@ h2{font-family:var(--serif);font-weight:600;font-size:clamp(1.6rem,3vw,2.1rem);m
 .proj p{font-size:.94rem;color:var(--ink-soft);flex:1}
 .tags{margin-top:14px;display:flex;flex-wrap:wrap;gap:6px}
 .tags span{font-family:var(--mono);font-size:.7rem;background:var(--accent-soft);color:var(--accent);padding:3px 9px;border-radius:99px}
-
+ 
 /* ---------- Skills ---------- */
 .skill-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px}
 .skill-card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:22px}
 .skill-card h3{font-size:.95rem;font-weight:600;margin-bottom:12px}
 .skill-card .tags span{background:var(--bg);color:var(--ink-soft);border:1px solid var(--line)}
-
+ 
 /* ---------- Contact ---------- */
 .contact{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:48px 36px;text-align:center}
 .contact p{color:var(--ink-soft);max-width:52ch;margin:0 auto 26px}
 footer{padding:36px 0;text-align:center;color:var(--ink-soft);font-size:.85rem}
-
+ 
 @media (max-width:760px){
-  .nav-links{display:none}
+  .menu-btn{display:block}
+  .nav-links{display:none;position:absolute;top:60px;left:0;right:0;background:var(--card);border-bottom:1px solid var(--line);flex-direction:column;gap:0;padding:8px 0}
+  .nav-links.open{display:flex}
+  .nav-links li a{display:block;padding:12px 24px;border-bottom:none}
   .hero{padding:60px 0 52px}
   .hero-stats{grid-template-columns:repeat(2,1fr)}
   .about-grid{grid-template-columns:1fr}
@@ -118,11 +144,14 @@ footer{padding:36px 0;text-align:center;color:var(--ink-soft);font-size:.85rem}
 </style>
 </head>
 <body>
-
+ 
 <nav>
   <div class="wrap nav-inner">
     <a class="logo" href="#top">Bianca<span>.</span>Chen</a>
-    <ul class="nav-links">
+    <button class="menu-btn" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
       <li><a href="#about">About</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#projects">Projects</a></li>
@@ -131,27 +160,27 @@ footer{padding:36px 0;text-align:center;color:var(--ink-soft);font-size:.85rem}
     </ul>
   </div>
 </nav>
-
+ 
 <header class="hero" id="top">
   <div class="wrap">
-    <p class="eyebrow">Data Analyst · Incoming MS @ Northeastern</p>
-    <h1>I turn user behavior into
-      <span class="spark-word">product decisions<svg viewBox="0 0 200 24" aria-hidden="true" preserveAspectRatio="none"><path d="M2 18 L30 14 L58 17 L90 8 L122 12 L154 4 L198 7"/></svg></span>
-    </h1>
-    <p class="hero-sub">Statistics graduate with hands-on analytics experience across consumer tech and global retail — from SQL-based retention analysis at Meitu across 15 markets to demand and inventory intelligence at Daiso. Starting my MS in Business Analytics at Northeastern University in Fall 2026, and seeking Data Analyst / BI Analyst opportunities in tech.</p>
+    <p class="eyebrow">Hi, I'm</p>
+    <h1 class="name">Bianca<em>Chen</em></h1>
+    <p class="type-line"><span id="typeText">Data Analyst</span><span class="cursor" aria-hidden="true"></span></p>
+    <p class="hero-sub">I turn user behavior into product decisions.</p>
     <div class="hero-cta">
-      <a class="btn btn-primary" href="#projects">View My Work</a>
-      <a class="btn btn-ghost" href="mailto:chensiyu368@gmail.com">Get in Touch</a>
+      <a class="btn btn-rose" href="#projects">View My Work</a>
+      <a class="btn btn-ghost" href="https://github.com/biancachen7" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a>
+      <a class="btn btn-ghost" href="https://www.linkedin.com/in/bianca-sih-yu-c-26ab28317/" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M13.63 13.63h-2.37V9.92c0-.89-.02-2.03-1.24-2.03-1.24 0-1.43.97-1.43 1.96v3.78H6.22V6h2.28v1.04h.03c.32-.6 1.09-1.24 2.25-1.24 2.4 0 2.85 1.58 2.85 3.64v4.19zM3.54 4.96a1.38 1.38 0 1 1 0-2.75 1.38 1.38 0 0 1 0 2.75zM4.72 13.63H2.35V6h2.37v7.63zM14.82 0H1.18C.53 0 0 .52 0 1.16v13.68C0 15.48.53 16 1.18 16h13.63c.65 0 1.19-.52 1.19-1.16V1.16C16 .52 15.46 0 14.82 0z"/></svg>LinkedIn</a>
     </div>
     <div class="hero-stats">
-      <div class="stat"><b>15</b><span>global markets analyzed</span></div>
-      <div class="stat"><b>~50%</b><span>faster order processing</span></div>
-      <div class="stat"><b>15%</b><span>fewer core stockouts</span></div>
-      <div class="stat"><b>4</b><span>data roles &amp; ventures</span></div>
+      <div class="stat"><b>5<em>+</em></b><span>Years in Data</span></div>
+      <div class="stat"><b>3</b><span>Data Roles</span></div>
+      <div class="stat"><b>6</b><span>Analytics Tools</span></div>
+      <div class="stat"><b>1</b><span>Business Founded</span></div>
     </div>
   </div>
 </header>
-
+ 
 <section id="about">
   <div class="wrap">
     <p class="sec-label">About</p>
@@ -179,12 +208,12 @@ footer{padding:36px 0;text-align:center;color:var(--ink-soft);font-size:.85rem}
     </div>
   </div>
 </section>
-
+ 
 <section id="experience">
   <div class="wrap">
     <p class="sec-label">Career</p>
     <h2>Work Experience</h2>
-
+ 
     <article class="job">
       <div class="job-head">
         <h3>Data Analysis Assistant<small>Daiso · Retail Analytics</small></h3>
@@ -197,7 +226,7 @@ footer{padding:36px 0;text-align:center;color:var(--ink-soft);font-size:.85rem}
         <li>Delivered insights that cut core-product stockouts by <span class="metric">15%</span>, improved inventory turnover efficiency by <span class="metric">12%</span>, and contributed to a <span class="metric">5%</span> overall sales lift within one month</li>
       </ul>
     </article>
-
+ 
     <article class="job">
       <div class="job-head">
         <h3>E-commerce Operations &amp; Analytics<small>CHARLES &amp; KEITH · Fashion E-commerce</small></h3>
@@ -210,7 +239,7 @@ footer{padding:36px 0;text-align:center;color:var(--ink-soft);font-size:.85rem}
         <li>Built daily reports comparing product and campaign performance to support faster marketing decisions</li>
       </ul>
     </article>
-
+ 
     <article class="job">
       <div class="job-head">
         <h3>Data Analytics Intern<small>Meitu Inc. · Consumer Tech</small></h3>
@@ -223,7 +252,7 @@ footer{padding:36px 0;text-align:center;color:var(--ink-soft);font-size:.85rem}
         <li>Evaluated advertising channels and campaign performance to sharpen user acquisition spend</li>
       </ul>
     </article>
-
+ 
     <article class="job">
       <div class="job-head">
         <h3>Founder<small>Happiness &amp; Bliss Dessert · Online Bakery</small></h3>
@@ -238,7 +267,7 @@ footer{padding:36px 0;text-align:center;color:var(--ink-soft);font-size:.85rem}
     </article>
   </div>
 </section>
-
+ 
 <section id="projects">
   <div class="wrap">
     <p class="sec-label">Portfolio</p>
@@ -262,7 +291,7 @@ footer{padding:36px 0;text-align:center;color:var(--ink-soft);font-size:.85rem}
     </div>
   </div>
 </section>
-
+ 
 <section id="skills">
   <div class="wrap">
     <p class="sec-label">Toolkit</p>
@@ -287,7 +316,7 @@ footer{padding:36px 0;text-align:center;color:var(--ink-soft);font-size:.85rem}
     </div>
   </div>
 </section>
-
+ 
 <section id="contact">
   <div class="wrap">
     <div class="contact">
@@ -296,15 +325,105 @@ footer{padding:36px 0;text-align:center;color:var(--ink-soft);font-size:.85rem}
       <p>Seeking Data Analyst and Business Intelligence Analyst roles in technology and consumer-focused companies. Open to internships, co-ops, and coffee chats.</p>
       <div class="hero-cta" style="justify-content:center">
         <a class="btn btn-primary" href="mailto:chensiyu368@gmail.com">chensiyu368@gmail.com</a>
-        <!-- TODO: replace # with your real profile URLs -->
-        <a class="btn btn-ghost" href="#" aria-label="GitHub profile">GitHub</a>
-        <a class="btn btn-ghost" href="#" aria-label="LinkedIn profile">LinkedIn</a>
+        <a class="btn btn-ghost" href="https://github.com/biancachen7" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn btn-ghost" href="https://www.linkedin.com/in/bianca-sih-yu-c-26ab28317/" target="_blank" rel="noopener">LinkedIn</a>
       </div>
     </div>
   </div>
 </section>
-
+ 
 <footer>© 2026 Sih-Yu (Bianca) Chen</footer>
-
+ 
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ 
+  /* Typewriter effect */
+  var typeEl = document.getElementById('typeText');
+  var phrases = ['Data Analyst', 'Northeastern University', 'MS in Business Analytics', 'BS in Statistics'];
+  if (typeEl && !reduce) {
+    var pi = 0, ci = phrases[0].length, deleting = true;
+    setTimeout(function tick(){
+      var word = phrases[pi];
+      if (deleting) {
+        ci--;
+        if (ci === 0) { deleting = false; pi = (pi + 1) % phrases.length; }
+      } else {
+        ci++;
+        if (ci === phrases[pi].length) { deleting = true; setTimeout(tick, 2200); typeEl.textContent = phrases[pi]; return; }
+      }
+      typeEl.textContent = (deleting ? word : phrases[pi]).slice(0, ci);
+      setTimeout(tick, deleting ? 45 : 85);
+    }, 2200);
+  }
+ 
+  /* Mobile menu */
+  var btn = document.querySelector('.menu-btn');
+  var links = document.getElementById('navLinks');
+  btn.addEventListener('click', function(){
+    var open = links.classList.toggle('open');
+    btn.classList.toggle('open', open);
+    btn.setAttribute('aria-expanded', open);
+  });
+  links.addEventListener('click', function(e){
+    if (e.target.tagName === 'A') { links.classList.remove('open'); btn.classList.remove('open'); btn.setAttribute('aria-expanded','false'); }
+  });
+ 
+  /* Scroll reveal */
+  var revealTargets = document.querySelectorAll('.job, .proj, .skill-card, .about-grid > *, .contact');
+  revealTargets.forEach(function(el){ el.classList.add('reveal'); });
+  if (!reduce && 'IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting) { entry.target.classList.add('visible'); io.unobserve(entry.target); }
+      });
+    }, { threshold: 0.12 });
+    revealTargets.forEach(function(el){ io.observe(el); });
+  } else {
+    revealTargets.forEach(function(el){ el.classList.add('visible'); });
+  }
+ 
+  /* Animated counters in hero stats */
+  var stats = document.querySelectorAll('.stat b');
+  function animateStat(b){
+    var node = b.firstChild; // text node with the number
+    var target = parseInt(node.textContent.replace(/[^0-9]/g,''), 10);
+    if (isNaN(target)) return;
+    var start = null, dur = 1100;
+    function step(ts){
+      if (!start) start = ts;
+      var p = Math.min((ts - start) / dur, 1);
+      node.textContent = Math.round(target * (1 - Math.pow(1 - p, 3)));
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  if (!reduce && 'IntersectionObserver' in window) {
+    var statIO = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting) { animateStat(entry.target); statIO.unobserve(entry.target); }
+      });
+    }, { threshold: 0.5 });
+    stats.forEach(function(b){ statIO.observe(b); });
+  }
+ 
+  /* Active nav highlighting */
+  var sections = document.querySelectorAll('section[id]');
+  var navAnchors = document.querySelectorAll('.nav-links a');
+  if ('IntersectionObserver' in window) {
+    var navIO = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting) {
+          navAnchors.forEach(function(a){
+            a.classList.toggle('active', a.getAttribute('href') === '#' + entry.target.id);
+          });
+        }
+      });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    sections.forEach(function(s){ navIO.observe(s); });
+  }
+})();
+</script>
+ 
 </body>
 </html>
