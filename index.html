@@ -88,6 +88,8 @@ h2{font-family:var(--serif);font-weight:600;font-size:clamp(1.6rem,3vw,2.1rem);m
 /* ---------- About ---------- */
 .about-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:44px;align-items:start}
 .about-grid p+p{margin-top:16px}
+.about-photo{border-radius:12px;overflow:hidden;border:1px solid var(--line);margin-bottom:18px;background:var(--card)}
+.about-photo img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover}
 .edu-card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:22px}
 .edu-item+.edu-item{margin-top:18px;padding-top:18px;border-top:1px dashed var(--line)}
 .edu-item b{display:block;font-weight:600}
@@ -95,6 +97,16 @@ h2{font-family:var(--serif);font-weight:600;font-size:clamp(1.6rem,3vw,2.1rem);m
 .edu-tag{display:inline-block;margin-top:8px;font-family:var(--mono);font-size:.72rem;background:var(--accent-soft);color:var(--accent);padding:3px 9px;border-radius:99px}
  
 /* ---------- Experience ---------- */
+.exp-layout{display:grid;grid-template-columns:230px 1fr;gap:26px;align-items:start}
+.exp-tabs{display:flex;flex-direction:column;gap:4px;position:sticky;top:80px}
+.exp-tab{text-align:left;background:none;border:none;border-left:3px solid var(--line);padding:12px 16px;cursor:pointer;font-family:var(--sans);font-size:.95rem;font-weight:600;color:var(--ink-soft);transition:background .15s ease,color .15s ease}
+.exp-tab small{display:block;font-weight:400;font-size:.76rem;font-family:var(--mono);margin-top:2px}
+.exp-tab:hover{color:var(--accent)}
+.exp-tab.active{border-left-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
+.exp-panel{display:none}
+.exp-panel.active{display:block;animation:panelIn .35s ease}
+@keyframes panelIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.exp-panel.active{animation:none}}
 .job{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:26px 28px;margin-bottom:20px}
 .job-head{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:6px}
 .job-head h3{font-family:var(--serif);font-weight:600;font-size:1.18rem}
@@ -134,6 +146,10 @@ footer{padding:36px 0;text-align:center;color:var(--ink-soft);font-size:.85rem}
   .hero{padding:60px 0 52px}
   .hero-stats{grid-template-columns:repeat(2,1fr)}
   .about-grid{grid-template-columns:1fr}
+  .exp-layout{grid-template-columns:1fr}
+  .exp-tabs{position:static;flex-direction:row;overflow-x:auto;gap:8px;padding-bottom:8px}
+  .exp-tab{border-left:none;border-bottom:3px solid var(--line);white-space:nowrap}
+  .exp-tab.active{border-left:none;border-bottom-color:var(--accent)}
   .job-meta{text-align:left}
   section{padding:52px 0}
 }
@@ -175,7 +191,7 @@ footer{padding:36px 0;text-align:center;color:var(--ink-soft);font-size:.85rem}
     <div class="hero-stats">
       <div class="stat"><b>5<em>+</em></b><span>Years in Data</span></div>
       <div class="stat"><b>3</b><span>Data Roles</span></div>
-      <div class="stat"><b>6</b><span>Analytics Tools</span></div>
+      <div class="stat"><b>10<em>+</em></b><span>Analytics Tools</span></div>
       <div class="stat"><b>1</b><span>Business Founded</span></div>
     </div>
   </div>
@@ -191,7 +207,9 @@ footer{padding:36px 0;text-align:center;color:var(--ink-soft);font-size:.85rem}
         <p>Since then I've pressure-tested that instinct in real product and business environments: decomposing engagement and churn drivers from app behavior data at Meitu, tying e-commerce traffic and campaign metrics to conversion at CHARLES &amp; KEITH, and building the inventory analytics that guide restocking decisions across Daiso stores.</p>
         <p>What ties it together: I don't stop at a cleaner chart. I dig for the better question — is this a visibility problem or a loyalty problem? — and translate messy, cross-platform data into a narrative that product, marketing, and operations teams can act on.</p>
       </div>
-      <div class="edu-card">
+      <div>
+        <div class="about-photo"><img src="profile.jpg" alt="Bianca Chen" onerror="this.parentElement.style.display='none'"></div>
+        <div class="edu-card">
         <div class="edu-item">
           <b>Northeastern University</b>
           <small>MS in Business Analytics</small>
@@ -204,6 +222,7 @@ footer{padding:36px 0;text-align:center;color:var(--ink-soft);font-size:.85rem}
           <small>Sep 2020 – Sep 2024</small>
           <small style="margin-top:6px">Regression Analysis · R &amp; SAS Programming · Advanced Calculus · Linear Algebra</small>
         </div>
+        </div>
       </div>
     </div>
   </div>
@@ -214,7 +233,16 @@ footer{padding:36px 0;text-align:center;color:var(--ink-soft);font-size:.85rem}
     <p class="sec-label">Career</p>
     <h2>Work Experience</h2>
  
-    <article class="job">
+    <div class="exp-layout">
+      <div class="exp-tabs" role="tablist" aria-label="Employers">
+        <button class="exp-tab active" role="tab" aria-selected="true" data-panel="exp-daiso">Daiso<small>2025 – Present</small></button>
+        <button class="exp-tab" role="tab" aria-selected="false" data-panel="exp-ck">CHARLES &amp; KEITH<small>2024 – 2025</small></button>
+        <button class="exp-tab" role="tab" aria-selected="false" data-panel="exp-meitu">Meitu Inc.<small>2024</small></button>
+        <button class="exp-tab" role="tab" aria-selected="false" data-panel="exp-bakery">Founder<small>2021 – 2022</small></button>
+      </div>
+      <div class="exp-panels">
+ 
+    <article class="job exp-panel active" id="exp-daiso" role="tabpanel">
       <div class="job-head">
         <h3>Data Analysis Assistant<small>Daiso · Retail Analytics</small></h3>
         <p class="job-meta">Dec 2025 – Present<br>Taipei, Taiwan</p>
@@ -227,7 +255,7 @@ footer{padding:36px 0;text-align:center;color:var(--ink-soft);font-size:.85rem}
       </ul>
     </article>
  
-    <article class="job">
+    <article class="job exp-panel" id="exp-ck" role="tabpanel">
       <div class="job-head">
         <h3>E-commerce Operations &amp; Analytics<small>CHARLES &amp; KEITH · Fashion E-commerce</small></h3>
         <p class="job-meta">Dec 2024 – Apr 2025<br>Taipei, Taiwan</p>
@@ -240,7 +268,7 @@ footer{padding:36px 0;text-align:center;color:var(--ink-soft);font-size:.85rem}
       </ul>
     </article>
  
-    <article class="job">
+    <article class="job exp-panel" id="exp-meitu" role="tabpanel">
       <div class="job-head">
         <h3>Data Analytics Intern<small>Meitu Inc. · Consumer Tech</small></h3>
         <p class="job-meta">Jul 2024 – Oct 2024<br>Taipei, Taiwan</p>
@@ -253,7 +281,7 @@ footer{padding:36px 0;text-align:center;color:var(--ink-soft);font-size:.85rem}
       </ul>
     </article>
  
-    <article class="job">
+    <article class="job exp-panel" id="exp-bakery" role="tabpanel">
       <div class="job-head">
         <h3>Founder<small>Happiness &amp; Bliss Dessert · Online Bakery</small></h3>
         <p class="job-meta">Sep 2021 – Jan 2022<br>Taipei, Taiwan</p>
@@ -265,6 +293,8 @@ footer{padding:36px 0;text-align:center;color:var(--ink-soft);font-size:.85rem}
         <li>Tracked Instagram engagement and transaction records to identify high-performing content and optimize product mix and promotional timing</li>
       </ul>
     </article>
+      </div>
+    </div>
   </div>
 </section>
  
@@ -302,16 +332,16 @@ footer{padding:36px 0;text-align:center;color:var(--ink-soft);font-size:.85rem}
         <div class="tags"><span>SQL</span><span>Python</span><span>R</span><span>SAS</span></div>
       </div>
       <div class="skill-card">
+        <h3>🗄️ Databases</h3>
+        <div class="tags"><span>MySQL</span><span>MongoDB</span></div>
+      </div>
+      <div class="skill-card">
         <h3>📊 Analytics &amp; Statistics</h3>
-        <div class="tags"><span>Retention &amp; Funnel Analysis</span><span>Time Series (ARIMA)</span><span>Regression</span><span>A/B &amp; Campaign Evaluation</span></div>
+        <div class="tags"><span>Retention &amp; Funnel Analysis</span><span>Time Series (ARIMA)</span><span>Regression</span><span>A/B &amp; Campaign Evaluation</span><span>Google Analytics</span></div>
       </div>
       <div class="skill-card">
         <h3>📈 BI &amp; Visualization</h3>
-        <div class="tags"><span>Excel (Pivot, Dashboards)</span><span>R Shiny</span><span>SPSS</span><span>SQL Dashboards</span></div>
-      </div>
-      <div class="skill-card">
-        <h3>🌐 Languages &amp; Certifications</h3>
-        <div class="tags"><span>Mandarin (Native)</span><span>English (Professional)</span><span>IBM SPSS — BI Data Analyst</span></div>
+        <div class="tags"><span>Tableau</span><span>Power BI</span><span>Excel (Pivot, Dashboards)</span><span>R Shiny</span><span>ggplot2</span><span>SPSS</span></div>
       </div>
     </div>
   </div>
@@ -357,6 +387,18 @@ footer{padding:36px 0;text-align:center;color:var(--ink-soft);font-size:.85rem}
     }, 2200);
   }
  
+  /* Experience tabs */
+  var tabs = document.querySelectorAll('.exp-tab');
+  tabs.forEach(function(tab){
+    tab.addEventListener('click', function(){
+      tabs.forEach(function(t){ t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
+      document.querySelectorAll('.exp-panel').forEach(function(p){ p.classList.remove('active'); });
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected','true');
+      document.getElementById(tab.getAttribute('data-panel')).classList.add('active');
+    });
+  });
+ 
   /* Mobile menu */
   var btn = document.querySelector('.menu-btn');
   var links = document.getElementById('navLinks');
@@ -370,7 +412,7 @@ footer{padding:36px 0;text-align:center;color:var(--ink-soft);font-size:.85rem}
   });
  
   /* Scroll reveal */
-  var revealTargets = document.querySelectorAll('.job, .proj, .skill-card, .about-grid > *, .contact');
+  var revealTargets = document.querySelectorAll('.exp-layout, .proj, .skill-card, .about-grid > *, .contact');
   revealTargets.forEach(function(el){ el.classList.add('reveal'); });
   if (!reduce && 'IntersectionObserver' in window) {
     var io = new IntersectionObserver(function(entries){
