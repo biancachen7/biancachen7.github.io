@@ -13,10 +13,10 @@
   --bg:#F4F6F5;
   --card:#FFFFFF;
   --ink:#10201C;
-  --ink-soft:#41544E;
+  --ink-soft:#3E4C57;
   --line:#D8E0DD;
-  --accent:#0E6B5E;
-  --accent-soft:#E3EFEC;
+  --accent:#1D6FB8;
+  --accent-soft:#E4EEF7;
   --berry:#8C2F4F;
   --mono:'IBM Plex Mono',monospace;
   --serif:'IBM Plex Serif',serif;
@@ -51,15 +51,15 @@ nav{position:sticky;top:0;z-index:20;background:rgba(244,246,245,.88);backdrop-f
 @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
  
 /* ---------- Hero ---------- */
-.hero{padding:100px 0 84px;color:#fff;background:linear-gradient(rgba(10,22,19,.32),rgba(10,22,19,.55)),url('hero.jpg') center/cover no-repeat,linear-gradient(160deg,#12403A 0%,#0E6B5E 55%,#B34A6F 130%)}
+.hero{padding:100px 0 84px;color:#fff;background:linear-gradient(rgba(10,22,19,.32),rgba(10,22,19,.55)),url('hero.jpg') center/cover no-repeat,linear-gradient(160deg,#123A52 0%,#1D6FB8 55%,#B34A6F 130%)}
 .eyebrow{font-family:var(--mono);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:18px}
-.hero .eyebrow{color:#8FD9C6}
+.hero .eyebrow{color:#9FC7EE}
 h1{font-family:var(--serif);font-weight:600;font-size:clamp(2.3rem,5.4vw,3.6rem);line-height:1.12;letter-spacing:-.01em;max-width:17ch}
 .spark-word{position:relative;white-space:nowrap}
 .spark-word svg{position:absolute;left:0;bottom:-.28em;width:100%;height:.5em;overflow:visible}
 .spark-word path{fill:none;stroke:var(--berry);stroke-width:3;stroke-linecap:round}
 .hero .spark-word path{stroke:#F48FB1}
-.hero-sub{margin-top:22px;font-size:1.13rem;color:#C9D6D1;max-width:56ch}
+.hero-sub{margin-top:22px;font-size:1.13rem;color:#C7D4DE;max-width:56ch}
 .hero-cta{margin-top:34px;display:flex;gap:14px;flex-wrap:wrap}
 .btn{display:inline-block;padding:12px 22px;border-radius:6px;font-weight:600;font-size:.95rem;transition:transform .12s ease}
 .btn:hover{text-decoration:none;transform:translateY(-1px)}
@@ -71,14 +71,14 @@ h1{font-family:var(--serif);font-weight:600;font-size:clamp(2.3rem,5.4vw,3.6rem)
 .hero .eyebrow::before{content:"";display:inline-block;width:30px;height:2px;background:#F48FB1;margin-right:12px;vertical-align:middle}
 .name{font-family:var(--serif);font-weight:600;font-size:clamp(3.2rem,9vw,5.4rem);line-height:1.02;letter-spacing:-.01em}
 .name em{display:block;font-style:italic;color:#F48FB1}
-.type-line{margin-top:20px;font-size:1.3rem;font-weight:500;color:#E4ECE9;min-height:1.6em}
-.cursor{display:inline-block;width:3px;height:1.15em;background:#4ADE80;margin-left:7px;vertical-align:text-bottom;animation:blink 1s steps(1) infinite}
+.type-line{margin-top:20px;font-size:1.3rem;font-weight:500;color:#E4EAF0;min-height:1.6em}
+.cursor{display:inline-block;width:3px;height:1.15em;background:#4A9EDE;margin-left:7px;vertical-align:text-bottom;animation:blink 1s steps(1) infinite}
 @keyframes blink{50%{opacity:0}}
 @media (prefers-reduced-motion:reduce){.cursor{animation:none}}
 .hero-stats{margin-top:76px;display:grid;grid-template-columns:repeat(4,1fr);gap:28px;border-top:1px solid rgba(255,255,255,.25);padding-top:30px}
 .stat b{display:block;font-family:var(--serif);font-size:2.2rem;font-weight:600;color:#fff;line-height:1.15}
 .stat b em{font-style:normal;color:#F48FB1}
-.stat span{font-size:.9rem;color:#AEBFB9}
+.stat span{font-size:.9rem;color:#AEBAC6}
  
 /* ---------- Sections ---------- */
 section{padding:72px 0}
@@ -122,6 +122,16 @@ h2{font-family:var(--serif);font-weight:600;font-size:clamp(1.6rem,3vw,2.1rem);m
 .job li::before{content:"";position:absolute;left:0;top:.62em;width:8px;height:8px;border-radius:2px;background:var(--accent-soft);border:1.5px solid var(--accent)}
 .job li b{color:var(--ink);font-weight:600}
 .metric{font-family:var(--mono);font-size:.86em;color:var(--berry);font-weight:500}
+ 
+/* ---------- Volunteer ---------- */
+.vol-card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:26px 28px}
+.vol-head{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:6px}
+.vol-head h3{font-family:var(--serif);font-weight:600;font-size:1.18rem}
+.vol-head h3 small{display:block;font-family:var(--sans);font-weight:500;font-size:.9rem;color:var(--ink-soft);margin-top:2px}
+.vol-card ul{list-style:none;margin-top:12px}
+.vol-card li{position:relative;padding-left:20px;margin-bottom:9px;color:var(--ink-soft)}
+.vol-card li::before{content:"";position:absolute;left:0;top:.62em;width:8px;height:8px;border-radius:2px;background:var(--accent-soft);border:1.5px solid var(--accent)}
+.vol-card li b{color:var(--ink);font-weight:600}
  
 /* ---------- Projects ---------- */
 .proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
@@ -178,6 +188,7 @@ footer{padding:36px 0;text-align:center;color:var(--ink-soft);font-size:.85rem}
       <li><a href="#about">About</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#projects">Projects</a></li>
+      <li><a href="#volunteer">Volunteer</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -331,6 +342,25 @@ footer{padding:36px 0;text-align:center;color:var(--ink-soft);font-size:.85rem}
   </div>
 </section>
  
+<section id="volunteer">
+  <div class="wrap">
+    <p class="sec-label">Beyond Work</p>
+    <h2>International Volunteer Experience</h2>
+    <div class="vol-card">
+      <div class="vol-head">
+        <h3>Volunteer Educator<small>International Volunteer Program · Cambodia</small></h3>
+        <p class="job-meta">Summer</p>
+      </div>
+      <ul>
+        <li>Designed <b>fun, hands-on educational activities</b> for elementary and junior high school students</li>
+        <li>Connected natural science to everyday life to spark students' curiosity and interest in learning science</li>
+        <li>Turned ideas into practical actions that made a real, useful impact on the local community</li>
+        <li>Collaborated with staff and locals in <b>English</b>, and picked up basic <b>Khmer (Cambodian)</b> along the way</li>
+      </ul>
+    </div>
+  </div>
+</section>
+ 
 <section id="skills">
   <div class="wrap">
     <p class="sec-label">Toolkit</p>
@@ -421,7 +451,7 @@ footer{padding:36px 0;text-align:center;color:var(--ink-soft);font-size:.85rem}
   });
  
   /* Scroll reveal */
-  var revealTargets = document.querySelectorAll('.exp-layout, .proj, .skill-card, .about-grid > *, .contact');
+  var revealTargets = document.querySelectorAll('.exp-layout, .vol-card, .proj, .skill-card, .about-grid > *, .contact');
   revealTargets.forEach(function(el){ el.classList.add('reveal'); });
   if (!reduce && 'IntersectionObserver' in window) {
     var io = new IntersectionObserver(function(entries){
