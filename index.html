@@ -106,16 +106,10 @@ h2{font-family:var(--serif);font-weight:600;font-size:clamp(1.6rem,3vw,2.1rem);m
 .edu-mini small{color:var(--ink-soft);font-size:.84rem;display:block;margin-top:2px}
  
 /* ---------- Experience ---------- */
-.exp-layout{display:grid;grid-template-columns:230px 1fr;gap:26px;align-items:start}
-.exp-tabs{display:flex;flex-direction:column;gap:4px;position:sticky;top:80px}
-.exp-tab{text-align:left;background:none;border:none;border-left:3px solid var(--line);padding:12px 16px;cursor:pointer;font-family:var(--sans);font-size:.95rem;font-weight:600;color:var(--ink-soft);transition:background .15s ease,color .15s ease}
-.exp-tab small{display:block;font-weight:400;font-size:.76rem;font-family:var(--mono);margin-top:2px}
-.exp-tab:hover{color:var(--accent)}
-.exp-tab.active{border-left-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
-.exp-panel{display:none}
-.exp-panel.active{display:block;animation:panelIn .35s ease}
-@keyframes panelIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-@media (prefers-reduced-motion:reduce){.exp-panel.active{animation:none}}
+.timeline{position:relative;padding-left:30px}
+.timeline::before{content:"";position:absolute;left:5px;top:8px;bottom:8px;width:2px;background:var(--line)}
+.timeline .job{position:relative}
+.timeline .job::before{content:"";position:absolute;left:-32px;top:37px;width:16px;height:3px;border-radius:2px;background:var(--accent)}
 .job{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:26px 28px;margin-bottom:20px}
 .job-head{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:6px}
 .job-head h3{font-family:var(--serif);font-weight:600;font-size:1.18rem}
@@ -168,10 +162,6 @@ footer{padding:36px 0;text-align:center;color:var(--ink-soft);font-size:.85rem}
   .about-side{display:flex;max-width:420px}
   .about-photo{flex:none;min-height:0;aspect-ratio:1/1}
   .edu-row{grid-template-columns:1fr}
-  .exp-layout{grid-template-columns:1fr}
-  .exp-tabs{position:static;flex-direction:row;overflow-x:auto;gap:8px;padding-bottom:8px}
-  .exp-tab{border-left:none;border-bottom:3px solid var(--line);white-space:nowrap}
-  .exp-tab.active{border-left:none;border-bottom-color:var(--accent)}
   .job-meta{text-align:left}
   section{padding:52px 0}
 }
@@ -257,16 +247,9 @@ footer{padding:36px 0;text-align:center;color:var(--ink-soft);font-size:.85rem}
     <p class="sec-label">Career</p>
     <h2>Work Experience</h2>
  
-    <div class="exp-layout">
-      <div class="exp-tabs" role="tablist" aria-label="Employers">
-        <button class="exp-tab active" role="tab" aria-selected="true" data-panel="exp-daiso">Daiso<small>2025 – 2026</small></button>
-        <button class="exp-tab" role="tab" aria-selected="false" data-panel="exp-ck">CHARLES &amp; KEITH<small>2024 – 2025</small></button>
-        <button class="exp-tab" role="tab" aria-selected="false" data-panel="exp-meitu">Meitu Inc.<small>2024</small></button>
-        <button class="exp-tab" role="tab" aria-selected="false" data-panel="exp-bakery">Founder<small>2021 – 2022</small></button>
-      </div>
-      <div class="exp-panels">
+    <div class="timeline">
  
-    <article class="job exp-panel active" id="exp-daiso" role="tabpanel">
+    <article class="job">
       <div class="job-head">
         <h3>Data Analyst<small>Daiso · Retail Analytics</small></h3>
         <p class="job-meta">Dec 2025 – Jul 2026<br>Taipei, Taiwan</p>
@@ -277,7 +260,7 @@ footer{padding:36px 0;text-align:center;color:var(--ink-soft);font-size:.85rem}
       </ul>
     </article>
  
-    <article class="job exp-panel" id="exp-ck" role="tabpanel">
+    <article class="job">
       <div class="job-head">
         <h3>E-commerce Analyst<small>CHARLES &amp; KEITH · Fashion E-commerce</small></h3>
         <p class="job-meta">Dec 2024 – Apr 2025<br>Taipei, Taiwan</p>
@@ -288,7 +271,7 @@ footer{padding:36px 0;text-align:center;color:var(--ink-soft);font-size:.85rem}
       </ul>
     </article>
  
-    <article class="job exp-panel" id="exp-meitu" role="tabpanel">
+    <article class="job">
       <div class="job-head">
         <h3>Data Scientist Intern<small>Meitu Inc. · Consumer Tech</small></h3>
         <p class="job-meta">Jul 2024 – Oct 2024<br>Taipei, Taiwan</p>
@@ -301,7 +284,7 @@ footer{padding:36px 0;text-align:center;color:var(--ink-soft);font-size:.85rem}
       </ul>
     </article>
  
-    <article class="job exp-panel" id="exp-bakery" role="tabpanel">
+    <article class="job">
       <div class="job-head">
         <h3>Founder<small>Happiness &amp; Bliss Dessert · Online Bakery</small></h3>
         <p class="job-meta">Sep 2021 – Jan 2022<br>Taipei, Taiwan</p>
@@ -309,11 +292,9 @@ footer{padding:36px 0;text-align:center;color:var(--ink-soft);font-size:.85rem}
       <ul>
         <li>Launched an Instagram-based storefront and managed the full order workflow, treating it as my <b>first end-to-end analytics lab</b></li>
         <li>Modeled unit economics from cost structures (materials, packaging, transport) to set profitable, data-driven pricing</li>
-        <li>Analyzed competitor pricing and customer demand to design promotions, discounts, and sampling campaigns for university customers</li>
         <li>Tracked Instagram engagement and transaction records to identify high-performing content and optimize product mix and promotional timing</li>
       </ul>
     </article>
-      </div>
     </div>
   </div>
 </section>
@@ -434,18 +415,6 @@ footer{padding:36px 0;text-align:center;color:var(--ink-soft);font-size:.85rem}
     }, 2200);
   }
  
-  /* Experience tabs */
-  var tabs = document.querySelectorAll('.exp-tab');
-  tabs.forEach(function(tab){
-    tab.addEventListener('click', function(){
-      tabs.forEach(function(t){ t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
-      document.querySelectorAll('.exp-panel').forEach(function(p){ p.classList.remove('active'); });
-      tab.classList.add('active');
-      tab.setAttribute('aria-selected','true');
-      document.getElementById(tab.getAttribute('data-panel')).classList.add('active');
-    });
-  });
- 
   /* Mobile menu */
   var btn = document.querySelector('.menu-btn');
   var links = document.getElementById('navLinks');
@@ -459,7 +428,7 @@ footer{padding:36px 0;text-align:center;color:var(--ink-soft);font-size:.85rem}
   });
  
   /* Scroll reveal */
-  var revealTargets = document.querySelectorAll('.exp-layout, .vol-card, .proj, .skill-card, .about-grid > *, .contact');
+  var revealTargets = document.querySelectorAll('.job, .vol-card, .proj, .skill-card, .about-grid > *, .contact');
   revealTargets.forEach(function(el){ el.classList.add('reveal'); });
   if (!reduce && 'IntersectionObserver' in window) {
     var io = new IntersectionObserver(function(entries){
